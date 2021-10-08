@@ -72,8 +72,7 @@ public class MainWindow extends JFrame {
 
         this.controlPanel.setLayout(new BoxLayout(this.controlPanel, BoxLayout.LINE_AXIS));
         this.controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        this.controlPanel.add(this.formPanel);
-        this.controlPanel.add(this.buttonPanel);
+
 
 
 
@@ -115,6 +114,8 @@ public class MainWindow extends JFrame {
         this.vehicleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Az ablak beállításai
+        this.controlPanel.add(this.formPanel);
+        this.controlPanel.add(this.buttonPanel);
         this.add(this.vehicleLabel);
         this.add(this.controlPanel);
         this.add(this.vehicleScrollPane);
