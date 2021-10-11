@@ -32,8 +32,8 @@ public class MainController {
         this.mainWindow = mainWindow;
         this.loadVehicle = new LoadVehicle();
         
-        ArrayList<Vehicle> carList = this.loadVehicle.load();
-        for(Vehicle vehicle : carList) {
+        ArrayList<Vehicle> vehicleList = this.loadVehicle.load();
+        for(Vehicle vehicle : vehicleList) {
             this.mainWindow.vehicleModel.addRow(
                 new Object[] {vehicle.ordinal, vehicle.brand, vehicle.year}
             );
