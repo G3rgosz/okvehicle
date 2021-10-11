@@ -1,54 +1,43 @@
 /*
  * File: MainController.java
- * Created Date: 2021-09-24 22:21:42
- * Author: Sallai Andras
- * Github: https://github.com/andteki
+ * Created Date: 2021-09-24 22:13:27
+ * Author: Szivak Gergo, Ban Cinti, Hermanyi Gergely
+ * Group: Szoft II N
+ * Original: revehicle, Sallai Andras
+ * Github: https://github.com/Gergosz-2000
  * -----
- * Last Modified: 2021-09-24
- * Modified By: Sallai Andras
+ * Last Modified: 2021-10-11
+ * Modified By: Szivak Gergo, Ban Cinti, Hermanyi Gergely
  * -----
- * Copyright (c) 2021 Sallai Andras
+ * Copyright (c) 2021 Szivak Gergo, Ban Cinti, Hermanyi Gergely
  * 
  * GNU GPL v2
  */
 
 package controllers;
 
-// importáljuk az ArrayList osztály:
 import java.util.ArrayList;
-
-// Importáljuk a LoadVehicle osztály
 import models.LoadVehicle;
-// Importáljuk a Vehicle osztályt
 import models.Vehicle;
-//Importáljuk a MainWindow osztályt
 import views.MainWindow;
 
-/**
- * Azért készítettem ezt a MainControllert, mert 
- * célszerű külön tenni a program vezérlést, 
- * elválasztani a megjelenítéstől és az adatok
- * beszerzésétől. Többrészre bonthattam volna,
- * de az majd ha szükséges lesz megteszem. 
- * Nem szüksége előre felbontani több részre. 
- */
 
 public class MainController {
-    //A mainWindow tagváltozó
+    
     MainWindow mainWindow;
-    //A loadVehicla tagváltozó
+   
     LoadVehicle loadVehicle;
-    //Az oszátly konstruktora
+    
     public MainController(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
         this.loadVehicle = new LoadVehicle();
-        //járművek listája:
-        ArrayList<Vehicle> vehicleList = this.loadVehicle.load();
-        for(Vehicle vehicle : vehicleList) {
+        
+        ArrayList<Vehicle> carList = this.loadVehicle.load();
+        for(Vehicle vehicle : carList) {
             this.mainWindow.vehicleModel.addRow(
                 new Object[] {vehicle.ordinal, vehicle.brand, vehicle.year}
             );
-        }// A for ciklus vége
+        }
 
          
         //TODO A névtelen metódus tartalmát ki kell szervezni
