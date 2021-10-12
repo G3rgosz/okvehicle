@@ -6,18 +6,16 @@
  * Original: revehicle, Sallai Andras
  * Github: https://github.com/Gergosz-2000
  * -----
- * Last Modified: 2021-10-11
+ * Last Modified: 2021-10-12
  * Modified By: Szivak Gergo, Ban Cinti, Hermanyi Gergely
  * -----
  * Copyright (c) 2021 Szivak Gergo, Ban Cinti, Hermanyi Gergely
  * 
  * GNU GPL v2
  */
-
 package views;
 
 import java.awt.GridLayout;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -45,55 +43,49 @@ public class MainWindow extends JFrame {
     public JButton addButton; 
     public JButton delButton;
     public JButton saveButton;
-
     public DefaultTableModel vehicleModel;
     public JTable vehicleTable;
     public JScrollPane vehicleScrollPane;
 
     public MainWindow() {
-
+        initUI();
+    }
+    private void initUI(){
         initFormPanelParts();
-
         initFormPanel();        
         initButtonPanel();
-
         initVehicleTable();
-
         initVehicleLabel();
         initControlPanel();
-
         initMainWindow();
     }
-
-    public void initFormPanelParts(){
-            
-        initOrdinalLabelAndField();
-        initBrandLabelAndField();
-        initYearLabelAndField();
+    private void initFormPanelParts(){
+        initOrdinalLabel();
+        initBrandLabel();
+        initYearLabel();
+        initFormPanelFields();
     }
-    private void initOrdinalLabelAndField(){
-
+    private void initOrdinalLabel(){
         this.ordinalLabel = new JLabel("Rendszám");
         this.ordinalLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         this.ordinalLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
-        this.ordinalField = new JTextField();
     }
-    private void initBrandLabelAndField(){
-
+    private void initBrandLabel(){
         this.brandLabel = new JLabel("Márka");
         this.brandLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         this.brandLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
-        this.brandField = new JTextField();
     }
-    private void initYearLabelAndField(){
-
+    private void initYearLabel(){
         this.yearLabel = new JLabel("Év");
         this.yearLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         this.yearLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+    }
+    private void initFormPanelFields(){
+        this.ordinalField = new JTextField();
+        this.brandField = new JTextField();
         this.yearField = new JTextField();
     }
-    public void initFormPanel(){
-
+    private void initFormPanel(){
         this.formPanel = new JPanel();
         this.formPanel.setLayout(new GridLayout(3, 2));
         this.formPanel.add(this.ordinalLabel);
@@ -103,8 +95,7 @@ public class MainWindow extends JFrame {
         this.formPanel.add(this.yearLabel);
         this.formPanel.add(this.yearField);
     }
-        public void initButtonPanel(){
-            
+    private void initButtonPanel(){
         initButtonPanelParts();
         this.buttonPanel = new JPanel();
         this.buttonPanel.setLayout(new BoxLayout(this.buttonPanel, BoxLayout.PAGE_AXIS));
@@ -113,13 +104,11 @@ public class MainWindow extends JFrame {
         this.buttonPanel.add(this.saveButton);
     }
     private void initButtonPanelParts(){
-
         this.addButton = new JButton("Hozzáadás");
         this.delButton = new JButton("Törlés");
         this.saveButton = new JButton("Mentés");
     }
-    public void initVehicleTable(){
-
+    private void initVehicleTable(){
         this.vehicleModel = new DefaultTableModel();
         this.vehicleTable = new JTable(vehicleModel);
         this.vehicleScrollPane = new JScrollPane(this.vehicleTable);
@@ -127,30 +116,23 @@ public class MainWindow extends JFrame {
         Object[] tableLabels = {"Rendszám", "Márka", "Év"};
         this.vehicleModel.setColumnIdentifiers(tableLabels);
     }
-    public void initVehicleLabel(){
-
+    private void initVehicleLabel(){
         this.vehicleLabel = new JLabel("Járművek");
         this.vehicleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         this.vehicleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
-    public void initControlPanel(){
-
+    private void initControlPanel(){
         this.controlPanel = new JPanel();
-
         this.controlPanel.setLayout(new BoxLayout(this.controlPanel, BoxLayout.LINE_AXIS));
         this.controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
         this.controlPanel.add(this.formPanel);
         this.controlPanel.add(this.buttonPanel);
     }
-    public void initMainWindow(){
-
+    private void initMainWindow(){
         this.add(this.vehicleLabel);
         this.add(this.controlPanel);
         this.add(this.vehicleScrollPane);
-
         this.setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
-        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
     }
