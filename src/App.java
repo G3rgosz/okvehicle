@@ -6,19 +6,18 @@
  * Original: revehicle, Sallai Andras
  * Github: https://github.com/Gergosz-2000
  * -----
- * Last Modified: 2021-10-08
+ * Last Modified: 2021-10-12
  * Modified By: Szivak Gergo, Ban Cinti, Hermanyi Gergely
  * -----
  * Copyright (c) 2021 Szivak Gergo, Ban Cinti, Hermanyi Gergely
  * 
  * GNU GPL v2
  */
-
 import controllers.MainController;
 import views.MainWindow;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         MainWindow mainWindow = new MainWindow();
         new MainController(mainWindow);
         mainWindow.setVisible(true);
